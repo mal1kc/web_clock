@@ -1,0 +1,145 @@
+<script lang="ts">
+  import { onMount, onDestroy } from "svelte";
+  import { clock_timezone } from "./clock_store";
+
+  export let timezone: string = "Europe/Istanbul";
+
+  let time = updateClock(timezone);
+
+  let interval: number;
+
+  function updateClock(tz: string): Date {
+    return changeTimeZone(new Date(), tz);
+  }
+
+  function changeTimeZone(date: string | Date, timeZone: string) {
+    if (typeof date === "string") {
+      return new Date(
+        new Date(date).toLocaleString("en-US", {
+          timeZone,
+        }),
+      );
+    }
+
+    return new Date(
+      date.toLocaleString("en-US", {
+        timeZone,
+      }),
+    );
+  }
+
+  // Example of setting an interval to update the clock every second
+  interval = setInterval(() => {
+    time = updateClock(timezone);
+  }, 1000);
+
+  onMount(() => {
+    updateClock(timezone);
+    setInterval(updateClock, 1000);
+  });
+
+  onDestroy(() => {
+    clearInterval(interval);
+  });
+  clock_timezone.subscribe((new_tz: string) => {
+    timezone = new_tz;
+  });
+</script>
+
+<div class="flex flex-col items-center stify-center">
+  <svg
+    class="w-auto h-auto transform rotate-90 dark:invert"
+    viewBox="0 0 200 200"
+  >
+    <circle
+      cx="100"
+      cy="100"
+      r="90"
+      stroke="lightgray"
+      stroke-width="10"
+      fill="none"
+    />
+
+    <line
+      id="clock-min-45"
+      x1="100"
+      y1="175"
+      x2="100"
+      y2="190"
+      stroke="lightgray"
+      stroke-width="2"
+    />
+    <line
+      id="clock-min-15"
+      x1="100"
+      y1="25"
+      x2="100"
+      y2="10"
+      stroke="lightgray"
+      stroke-width="2"
+    />
+
+    <line
+      id="clock-min-30"
+      x1="190"
+      y1="100"
+      x2="175"
+      y2="100"
+      stroke="lightgray"
+      stroke-width="2"
+    />
+
+    <line
+      id="clock-min-0"
+      x1="10"
+      y1="100"
+      x2="25"
+      y2="100"
+      stroke="lightgray"
+      stroke-width="2"
+    />
+
+    <line
+      x1="100"
+      y1="100"
+      x2="100"
+      y2="10"
+      stroke="black"
+      stroke-width="2"
+      transform="rotate({(time.getHours() % 12) * 30 +
+        time.getMinutes() * 0.5} 100 100)"
+    />
+    <line
+      x1="100"
+      y1="100"
+      x2="100"
+      y2="30"
+      stroke="black"
+      stroke-width="2"
+      transform="rotate({time.getMinutes() * 6} 100 100)"
+    />
+    <line
+      x1="100"
+      y1="100"
+      x2="100"
+      y2="50"
+      stroke="red"
+      stroke-width="2"
+      transform="rotate({time.getSeconds() * 6} 100 100)"
+    />
+  </svg>
+  <div
+    class="flex mt-10 items-center justify-center text-lg font-bold text-7xl"
+  >
+    {time.getHours()}:{time.getMinutes().toString().padStart(2, "0")}:{time
+      .getSeconds()
+      .toString()
+      .padStart(2, "0")}
+  </div>
+</div>
+
+<style>
+  svg {
+    transform-origin: center;
+  }
+</style>
