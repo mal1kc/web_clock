@@ -37,8 +37,8 @@
   }
 </script>
 
-<div class="p-4">
-  <label for="timezone" class="block text-lg font-medium text-gray-700">
+<div>
+  <label for="timezone" class="block text-lg dark:text-rich_black-700">
     Select Timezone:
   </label>
 
@@ -46,12 +46,10 @@
     id="timezone"
     bind:value={$selectedTimezone}
     on:change={handleTimezoneChange}
-    class="mt-2 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:border-blue-500"
+    class="m-2 inline-block text-center w-auto border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:border-blue-500"
   >
     {#each timezones as timezone}
       <option value={timezone}>{timezone}</option>
     {/each}
   </select>
-
-  <p class="mt-4 text-gray-600">Selected Timezone: {$selectedTimezone}</p>
 </div>

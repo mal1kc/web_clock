@@ -2,9 +2,21 @@
   import { onMount, onDestroy } from "svelte";
   import { clock_timezone } from "./clock_store";
 
-  export let timezone: string = "Europe/Istanbul";
+  export let timezone: string | undefined;
+  const default_tz = "Europe/Istanbul";
 
-  let time = updateClock(timezone);
+  if (typeof timezone != "string") {
+    clock_timezone.subscribe((new_tz: string) => {
+      timezone = new_tz;
+    });
+  }
+
+  onMount(() => {
+    updateClock(timezone ?? default_tz);
+    setInterval(updateClock, 1000);
+  });
+
+  let time = updateClock(timezone ?? default_tz);
 
   let interval: number;
 
@@ -30,19 +42,11 @@
 
   // Example of setting an interval to update the clock every second
   interval = setInterval(() => {
-    time = updateClock(timezone);
+    time = updateClock(timezone ?? default_tz);
   }, 1000);
-
-  onMount(() => {
-    updateClock(timezone);
-    setInterval(updateClock, 1000);
-  });
 
   onDestroy(() => {
     clearInterval(interval);
-  });
-  clock_timezone.subscribe((new_tz: string) => {
-    timezone = new_tz;
   });
 </script>
 
@@ -128,9 +132,7 @@
       transform="rotate({time.getSeconds() * 6} 100 100)"
     />
   </svg>
-  <div
-    class="flex mt-10 items-center justify-center text-lg font-bold text-7xl"
-  >
+  <div class="flex mt-10 items-center justify-center font-bold">
     {time.getHours()}:{time.getMinutes().toString().padStart(2, "0")}:{time
       .getSeconds()
       .toString()
