@@ -1,22 +1,14 @@
 <script lang="ts">
   import { onMount, onDestroy } from "svelte";
-  import { clock_timezone } from "./clock_store";
-
-  export let timezone: string | undefined;
+  let { timezone = $bindable() }: { timezone: string } = $props();
   const default_tz = "Europe/Istanbul";
-
-  if (typeof timezone != "string") {
-    clock_timezone.subscribe((new_tz: string) => {
-      timezone = new_tz;
-    });
-  }
 
   onMount(() => {
     updateClock(timezone ?? default_tz);
     setInterval(updateClock, 1000);
   });
 
-  let time = updateClock(timezone ?? default_tz);
+  let time = $state(updateClock(timezone ?? default_tz));
 
   let interval: number;
 

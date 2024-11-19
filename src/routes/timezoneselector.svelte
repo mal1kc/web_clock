@@ -1,39 +1,51 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { clock_timezone } from "./clock_store";
+  import {
+    change_def_timezone_for_clock_page_settings,
+    getClockPageSettings,
+  } from "./clock_store";
 
-  // Define a writable store to hold the selected timezone
-  export const selectedTimezone = clock_timezone;
+  let {
+    on_tz_change_func,
+  }: {
+    on_tz_change_func: (new_tz: string) => void;
+  } = $props();
 
-  // This will hold the list of timezones, you could also fetch from an API
-  let timezones: string[] = [];
+  // Reactive state for the selected timezone
+  let selected_clockpage_data = getClockPageSettings();
+  // List of available timezones
+  let timezones: string[] = $state([]);
 
-  // A mock function to simulate fetching timezones, you could use a package like `timezone-list`
+  // Fetch supported timezones on mount and set default
   onMount(() => {
-    // For now, using a hardcoded list or you could use a package like `timezone-list`
-    // timezones = [
-    //   "Atlantic/Reykjavik",
-    //   "Europe/Istanbul",
-    //   "Europe/Berlin",
-    //   "America/New_York",
-    //   "Asia/Tokyo",
-    //   "Australia/Sydney",
-    // ];
-
     timezones = Intl.supportedValuesOf("timeZone");
+    // Set default timezone to the system's timezone if not already set
+    if (!selected_clockpage_data.def_timezone) {
+      selected_clockpage_data.def_timezone =
+        Intl.DateTimeFormat().resolvedOptions().timeZone;
+      console.debug(
+        "setting tz to system default",
+        selected_clockpage_data.def_timezone,
+      );
 
-    selectedTimezone.set(Intl.DateTimeFormat().resolvedOptions().timeZone); // Set default to the first timezone
+      change_def_timezone_for_clock_page_settings(
+        selected_clockpage_data.def_timezone,
+      );
+    }
+    console.debug("current def_tz", selected_clockpage_data.def_timezone);
   });
 
-  // Handle timezone change (this could be connected to a custom event or other logic)
+  // Save updated timezone to both reactive state and cookies
   function handleTimezoneChange(event: Event) {
     const selectElement = event.target as HTMLSelectElement;
-    if (selectElement.value in timezones) {
-      updatetz(selectElement.value);
+    const newTimezone = selectElement.value;
+    if (timezones.includes(newTimezone)) {
+      selected_clockpage_data.def_timezone = newTimezone;
+      change_def_timezone_for_clock_page_settings(newTimezone);
+      if (typeof on_tz_change_func != "undefined") {
+        on_tz_change_func(newTimezone);
+      }
     }
-  }
-  function updatetz(new_tz: string) {
-    selectedTimezone.set(new_tz);
   }
 </script>
 
@@ -44,8 +56,8 @@
 
   <select
     id="timezone"
-    bind:value={$selectedTimezone}
-    on:change={handleTimezoneChange}
+    bind:value={selected_clockpage_data.def_timezone}
+    onchange={handleTimezoneChange}
     class="m-2 inline-block text-center w-auto border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:border-blue-500"
   >
     {#each timezones as timezone}

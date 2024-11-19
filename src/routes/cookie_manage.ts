@@ -31,18 +31,18 @@ export function getCookie(name: string) {
 }
 
 
-export function parseCookies(cookieString: string) {
-  const cookies: StringKeyObject = {};
-  const cookieArray = cookieString.split(';');
-
-  cookieArray.forEach(cookie => {
-    const [name, value] = cookie.split('=').map(c => c.trim());
-    if (name) {
-      cookies[name] = decodeURIComponent(value);
-    }
-  });
-
-  return cookies;
+export function parseCookies(cookieString: string): StringKeyObject {
+  // const cookies: StringKeyObject = {};
+  // const cookieArray = cookieString.split(";");
+  //
+  // cookieArray.forEach((cookie) => {
+  //   const [name, value] = cookie.split("=").map((c) => c.trim());
+  //   if (name) {
+  //     cookies[name] = decodeURIComponent(value);
+  //   }
+  // });
+  //
+  return JSON.parse(cookieString);
 }
 
 

@@ -1,4 +1,3 @@
-// import adapter from '@sveltejs/adapter-auto';
 import adapter from '@sveltejs/adapter-static';
 
 export default {
@@ -8,8 +7,8 @@ export default {
       // these options are set automatically — see below
       pages: 'build',
       assets: 'build',
-      fallback: undefined,
-      precompress: false,
+      fallback: '200.html',
+      precompress: true,
       strict: true
     })
   }
