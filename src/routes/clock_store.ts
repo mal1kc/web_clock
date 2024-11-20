@@ -90,23 +90,27 @@ export function change_def_timezone_for_clock_page_settings(timezone: string): v
   }
 }
 
-export function change_worldclock_tz_for_clock_page_settings(timezone: string): void {
+export function change_worldclock_tz_for_clock_page_settings(timezone: string, indx: number): void {
   const MAX_SIZE = 6;
   const currentSettings = getClockPageSettings();
-
-
+  const search_res = currentSettings.world_clock_timezones.indexOf(timezone)
+  if (search_res != -1) {
+    const temp = currentSettings.world_clock_timezones[indx];
+    currentSettings.world_clock_timezones[indx] = timezone;
+    currentSettings.world_clock_timezones[search_res] = temp;
+  }
   if (!currentSettings.world_clock_timezones.includes(timezone)) {
     // Add the new timezone to the list
-    currentSettings.world_clock_timezones.push(timezone);
+    currentSettings.world_clock_timezones[indx] = timezone;
 
     // Ensure the list does not exceed the maximum size
-    if (currentSettings.world_clock_timezones.length > MAX_SIZE) {
-      currentSettings.world_clock_timezones.shift(); // Remove the oldest entry
-    }
 
     setClockPageSettings(
       { world_clock_timezones: currentSettings.world_clock_timezones }
     )
+  }
+  if (currentSettings.world_clock_timezones.length > MAX_SIZE) {
+    currentSettings.world_clock_timezones.shift(); // Remove the oldest entry
   }
 }
 
