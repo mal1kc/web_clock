@@ -1,20 +1,8 @@
 <script lang="ts">
-  import Timezoneselector from "../timezoneselector.svelte";
-  import Clock from "../clock.svelte";
-  import { getClockPageSettings } from "../clock_store";
+  import { goto } from "$app/navigation";
+  import { onMount } from "svelte";
 
-  let curent_tz: string = getClockPageSettings().def_timezone;
-
-  function handleTimezoneChange(new_tz: string) {
-    curent_tz = new_tz;
-  }
+  onMount(() => {
+    goto("/");
+  });
 </script>
-
-<main class="text-center items-center">
-  <Timezoneselector on_tz_change_func={handleTimezoneChange} />
-  <h1 class="text-2xl font-bold mb-4">Timezone Clock</h1>
-  <Clock timezone={curent_tz} />
-</main>
-
-<style>
-</style>

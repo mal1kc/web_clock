@@ -40,8 +40,6 @@
     const selectElement = event.target as HTMLSelectElement;
     const newTimezone = selectElement.value;
     if (timezones.includes(newTimezone)) {
-      selected_clockpage_data.def_timezone = newTimezone;
-      change_def_timezone_for_clock_page_settings(newTimezone);
       if (typeof on_tz_change_func != "undefined") {
         on_tz_change_func(newTimezone);
       }

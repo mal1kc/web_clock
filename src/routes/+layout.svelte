@@ -28,7 +28,7 @@
   <h1
     class="flex center items-center justify-center dark:bg-rich_black dark:text-vista_blue text-raisin_black bg-floral_white text-6xl"
   >
-    web timer
+    <a href="/clock"> web clock </a>
   </h1>
 </header>
 
