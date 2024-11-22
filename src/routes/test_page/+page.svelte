@@ -42,7 +42,7 @@
     };
 
     // Output the result
-    console.log(default_cp_data);
+    // console.log(default_cp_data);
   } else {
     goto("/");
   }

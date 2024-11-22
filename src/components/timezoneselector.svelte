@@ -28,12 +28,12 @@
       // Set default timezone to the system's timezone if not already set
       if (!selected_tz) {
         selected_tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-        console.debug("setting tz to system default", selected_tz);
+        // console.debug("setting tz to system default", selected_tz);
 
         change_def_timezone_for_clock_page_settings(selected_tz);
       }
     }
-    console.debug("current def_tz", selected_tz);
+    // console.debug("current def_tz", selected_tz);
   });
 
   // Save updated timezone to both reactive state and cookies

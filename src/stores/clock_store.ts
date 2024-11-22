@@ -23,7 +23,6 @@ const default_cp_data: ClockPageSettings = {
 
 export function getClockPageSettings(): ClockPageSettings {
   const cp_cookie = getCookie(cookie_name);
-  console.debug("pre-parse-cookies", cp_cookie);
 
   // Initialize cookie_obj with default settings
   let cookie_obj: ClockPageSettings = { ...default_cp_data };
@@ -32,9 +31,9 @@ export function getClockPageSettings(): ClockPageSettings {
     try {
       const parsedCookies = parseCookies(cp_cookie);
       // TODO: fix this conversition bug
-      console.debug("parsedCookies ", parsedCookies);
-      console.debug("parsedCookies ", parsedCookies["def_timezone"]);
-      console.debug("parsedCookies ", parsedCookies.world_clock_timezones);
+      // console.debug("parsedCookies ", parsedCookies);
+      // console.debug("parsedCookies ", parsedCookies["def_timezone"]);
+      // console.debug("parsedCookies ", parsedCookies.world_clock_timezones);
 
       cookie_obj.def_timezone = parsedCookies.def_timezone || default_cp_data.def_timezone;
 
@@ -63,7 +62,7 @@ export function getClockPageSettings(): ClockPageSettings {
       // Convert the Set back to an array and limit to a maximum of 6 items
       cookie_obj.world_clock_timezones = Array.from(world_clock_timezones_set).slice(0, 6);
     } catch (error) {
-      console.debug("Error parsing cookie:", error);
+      console.error("Error parsing cookie:", error);
     }
   } else {
     deleteCookie(cookie_name);
@@ -82,12 +81,8 @@ export function setClockPageSettings(newSettings: Partial<ClockPageSettings>): v
 
 // change_timezone_for_clock_page_settings
 export function change_def_timezone_for_clock_page_settings(timezone: string): void {
-  if (Intl.supportedValuesOf("timeZone").includes(timezone)) {
-    setClockPageSettings({ def_timezone: timezone });
-    console.debug("changed_timezone", getClockPageSettings().def_timezone);
-  } else {
-    console.error("Invalid timezone:", timezone);
-  }
+  if (!Intl.supportedValuesOf("timeZone").includes(timezone)) return;
+  setClockPageSettings({ def_timezone: timezone });
 }
 
 export function change_worldclock_tz_for_clock_page_settings(timezone: string, indx: number): void {
