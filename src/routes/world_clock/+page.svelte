@@ -1,10 +1,10 @@
 <script lang="ts">
-  import Clock from "../clock.svelte";
+  import Clock from "../../components/clock.svelte";
   import {
     getClockPageSettings,
     change_worldclock_tz_for_clock_page_settings,
-  } from "../clock_store";
-  import Timezoneselector from "../timezoneselector.svelte";
+  } from "../../stores/clock_store";
+  import Timezoneselector from "../../components/timezoneselector.svelte";
 
   let current_wc_data = getClockPageSettings();
 

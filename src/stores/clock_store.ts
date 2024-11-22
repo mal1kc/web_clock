@@ -1,4 +1,4 @@
-import { deleteCookie, getCookie, parseCookies, setCookie } from "./cookie_manage";
+import { deleteCookie, getCookie, parseCookies, setCookie } from "../utils/cookie_manage";
 
 // Default clock page settings interface and values
 export interface ClockPageSettings {

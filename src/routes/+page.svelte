@@ -1,10 +1,10 @@
 <script lang="ts">
-  import Timezoneselector from "./timezoneselector.svelte";
-  import Clock from "./clock.svelte";
+  import Timezoneselector from "../components/timezoneselector.svelte";
+  import Clock from "../components/clock.svelte";
   import {
     change_def_timezone_for_clock_page_settings,
     getClockPageSettings,
-  } from "./clock_store";
+  } from "../stores/clock_store";
 
   let curent_tz: string = getClockPageSettings().def_timezone;
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Stopwatch from "../stopwatch.svelte";
+  import Stopwatch from "../../components/stopwatch.svelte";
 </script>
 
 <div>

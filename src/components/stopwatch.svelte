@@ -130,7 +130,12 @@
       id="flagButton"
       class="p-2 rounded hover:bg-vista_blue-200 dark:hover:bg-gray-800 focus:outline-none"
     >
-      <img alt="flag" src="/flag-3.svg" loading="lazy" class="w-8 h-8" />
+      <img
+        alt="flag"
+        src="/flag-3.svg"
+        loading="lazy"
+        class="w-8 h-8 dark:invert"
+      />
     </button>
 
     <button
@@ -142,7 +147,7 @@
         alt="play"
         src="/play.svg"
         loading="lazy"
-        class="w-8 h-8"
+        class="w-8 h-8 dark:invert"
       />
     </button>
 
@@ -155,7 +160,7 @@
         alt="pause"
         src="/pause.svg"
         loading="lazy"
-        class="w-8 h-8"
+        class="w-8 h-8 dark:invert"
       />
     </button>
 
@@ -163,7 +168,12 @@
       id="stopButton"
       class="p-2 rounded hover:bg-vista_blue-200 dark:hover:bg-gray-800 focus:outline-none"
     >
-      <img alt="stop" src="/stop.svg" loading="lazy" class="w-8 h-8" />
+      <img
+        alt="stop"
+        src="/stop.svg"
+        loading="lazy"
+        class="w-8 h-8 dark:invert"
+      />
     </button>
   </div>
 

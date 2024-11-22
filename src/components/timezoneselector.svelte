@@ -3,7 +3,7 @@
   import {
     change_def_timezone_for_clock_page_settings,
     getClockPageSettings,
-  } from "./clock_store";
+  } from "../stores/clock_store";
 
   let {
     on_tz_change_func,
