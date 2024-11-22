@@ -15,7 +15,10 @@
 </script>
 
 <main class="text-center items-center">
-  <Timezoneselector on_tz_change_func={handleTimezoneChange} />
+  <Timezoneselector
+    on_tz_change_func={handleTimezoneChange}
+    default_selection={curent_tz}
+  />
   <h1 class="text-2xl font-bold mb-4">Timezone Clock</h1>
   <Clock timezone={curent_tz} />
 </main>

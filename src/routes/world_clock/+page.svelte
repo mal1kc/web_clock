@@ -28,7 +28,6 @@
 >
   {#each selected_timezones as tz, indx}
     <div class="m-10 text-4xl justify-center items-center text-center">
-      <p>{tz}</p>
       <Timezoneselector
         default_selection={tz}
         on_tz_change_func={genAddTimezoneFunc(indx)}

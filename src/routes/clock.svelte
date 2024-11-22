@@ -135,5 +135,7 @@
 <style>
   svg {
     transform-origin: center;
+    display: block;
+    align-content: center;
   }
 </style>

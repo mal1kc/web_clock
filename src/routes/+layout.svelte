@@ -53,7 +53,7 @@
 >
   <div class="flex columns-3 gap-10">
     <a
-      class="flex items-center gap-2 hover:underline hover:underline-offset-4"
+      class="flex items-center gap-2 hover:underline hover:underline-offset-4 dark:invert"
       href="/clock"
     >
       <img
@@ -66,7 +66,7 @@
       clock
     </a>
     <a
-      class="flex items-center gap-2 hover:underline hover:underline-offset-4"
+      class="flex items-center gap-2 hover:underline hover:underline-offset-4 dark:invert"
       href="/stopwatch"
     >
       <img
@@ -79,7 +79,20 @@
       stopwatch
     </a>
     <a
-      class="flex items-center gap-2 hover:underline hover:underline-offset-4"
+      class="flex items-center gap-2 hover:underline hover:underline-offset-4 dark:invert"
+      href="/timer"
+    >
+      <img
+        aria-hidden="true"
+        src="/timer.svg"
+        alt="haurglass"
+        width="16"
+        height="16"
+      />
+      timer
+    </a>
+    <a
+      class="flex items-center gap-2 hover:underline hover:underline-offset-4 dark:invert"
       href="/world_clock"
     >
       <img
