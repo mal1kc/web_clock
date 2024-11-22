@@ -28,7 +28,7 @@
   <h1
     class="flex center items-center justify-center dark:bg-rich_black dark:text-vista_blue text-raisin_black bg-floral_white text-6xl"
   >
-    <a href="clock"> web clock </a>
+    <a href="/clock"> web clock </a>
   </h1>
 </header>
 
@@ -54,11 +54,11 @@
   <div class="flex columns-3 gap-10">
     <a
       class="flex items-center gap-2 hover:underline hover:underline-offset-4 dark:invert"
-      href="clock"
+      href="/clock"
     >
       <img
         aria-hidden="true"
-        src="clock.svg"
+        src="/clock.svg"
         alt="Clock icon"
         width="16"
         height="16"
@@ -67,11 +67,11 @@
     </a>
     <a
       class="flex items-center gap-2 hover:underline hover:underline-offset-4 dark:invert"
-      href="stopwatch"
+      href="/stopwatch"
     >
       <img
         aria-hidden="true"
-        src="stopwatch.svg"
+        src="/stopwatch.svg"
         alt="Stopwatch icon"
         width="16"
         height="16"
@@ -80,11 +80,11 @@
     </a>
     <a
       class="flex items-center gap-2 hover:underline hover:underline-offset-4 dark:invert"
-      href="timer"
+      href="/timer"
     >
       <img
         aria-hidden="true"
-        src="timer.svg"
+        src="/timer.svg"
         alt="haurglass"
         width="16"
         height="16"
@@ -93,11 +93,11 @@
     </a>
     <a
       class="flex items-center gap-2 hover:underline hover:underline-offset-4 dark:invert"
-      href="world_clock"
+      href="/world_clock"
     >
       <img
         aria-hidden="true"
-        src="globe.svg"
+        src="/globe.svg"
         alt="Globe icon"
         width="16"
         height="16"
