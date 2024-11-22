@@ -1,5 +1,6 @@
 <script lang="ts">
   import { browser } from "$app/environment";
+  import { base } from "$app/paths";
 
   let {
     onStart,
@@ -50,7 +51,7 @@
       onclick={onFlagInternal}
       class="p-2 rounded hover:bg-gray-300 focus:outline-none dark:invert"
     >
-      <img alt="flag" src="/flag-3.svg" class="w-8 h-8" />
+      <img alt="flag" src="{base}/flag-3.svg" class="w-8 h-8" />
     </button>
   {/if}
 
@@ -59,7 +60,7 @@
     onclick={onStartInternal}
     class="p-2 rounded hover:bg-gray-300 focus:outline-none dark:invert"
   >
-    <img alt="play" src="/play.svg" class="w-8 h-8" />
+    <img alt="play" src="{base}/play.svg" class="w-8 h-8" />
   </button>
 
   <button
@@ -67,7 +68,7 @@
     onclick={onPauseInternal}
     class="p-2 rounded hidden hover:bg-gray-300 focus:outline-none dark:invert"
   >
-    <img alt="pause" src="/pause.svg" class="w-8 h-8" />
+    <img alt="pause" src="{base}/pause.svg" class="w-8 h-8" />
   </button>
 
   <button
@@ -75,6 +76,6 @@
     onclick={onStopInternal}
     class="p-2 rounded hover:bg-gray-300 focus:outline-none dark:invert"
   >
-    <img alt="stop" src="/stop.svg" class="w-8 h-8" />
+    <img alt="stop" src="{base}/stop.svg" class="w-8 h-8" />
   </button>
 </div>

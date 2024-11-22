@@ -1,3 +1,8 @@
-# a web_timer , world_clock , stopwatch
+# a web clock 
+ a web app built with svelte kit and tailwindcss features
 
-a web app built with svelte kit and tailwindcss
+ * timezone specific clock
+ * world_clock 
+ * stopwatch
+ * timer
+
