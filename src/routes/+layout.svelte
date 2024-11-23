@@ -72,7 +72,7 @@
     >
       <img
         aria-hidden="true"
-        src="{base}0/stopwatch.svg"
+        src="{base}/stopwatch.svg"
         alt="Stopwatch icon"
         width="16"
         height="16"
