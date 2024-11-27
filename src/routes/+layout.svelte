@@ -29,7 +29,7 @@
   <h1
     class="flex center items-center justify-center dark:bg-rich_black dark:text-vista_blue text-raisin_black bg-floral_white text-6xl"
   >
-    <a href="{base}/clock"> web clock </a>
+    <a href={base}> web clock </a>
   </h1>
 </header>
 
@@ -55,7 +55,7 @@
   <div class="flex columns-3 gap-10">
     <a
       class="flex items-center gap-2 hover:underline hover:underline-offset-4 dark:invert"
-      href="{base}/clock"
+      href={base}
     >
       <img
         aria-hidden="true"
