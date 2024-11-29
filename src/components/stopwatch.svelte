@@ -39,7 +39,7 @@
 
 <div class="stopwatch flex flex-col items-center gap-6 p-6">
   <h1 class="text-2xl font-bold text-center">Stopwatch</h1>
-  <Timerdisplay time={timeForTimerStr(elapsedTime)} />
+  <Timerdisplay exported_time_str={timeForTimerStr(elapsedTime)} />
   <ControlButtons
     onStart={startStopwatch}
     onStop={stopStopwatch}

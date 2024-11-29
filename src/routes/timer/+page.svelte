@@ -1,6 +1,6 @@
 <script lang="ts">
   import Timer from "../../components/timer.svelte";
-  let initial_timer_value = 60_000; // 1 min as ms
+  let inital_remainin_time = 600_001; //10  min as ms + 1 ms
 </script>
 
-<Timer inital_remainin_time={initial_timer_value} />
+<Timer {inital_remainin_time} />

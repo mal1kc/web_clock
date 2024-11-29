@@ -116,7 +116,6 @@
     const canvas_ctx = clockCanvas.getContext("2d");
     const radius = clockCanvas.width / 2;
     if (canvas_ctx != null) {
-      // drawClock(canvas_ctx, radius);
       canvas_interval = setInterval(() => {
         drawClock(canvas_ctx, radius);
       }, 1000);
